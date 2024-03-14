@@ -109,7 +109,7 @@ export default function Home() {
             <div className="relative">
            <div className=" w-[320px] h-[250px] pb-[200px]">
              <Image
-               src="/images/zoom-logo.png"
+               src="/images/du_icon.svg"
                alt="avatar"
                fill
                className="object-cover "
@@ -117,7 +117,7 @@ export default function Home() {
            </div>
            
          </div>
-         <button className="text-white px-10 py-2 outline-none border rounded-md mt-5 border-blue-500 bg-blue-500"  onClick={() => setShowForm(true)}>Get started with $4.99 </button>
+         <button className="text-white px-10 py-2 outline-none border rounded-md mt-5 border-blue-500 bg-blue-500"  onClick={() => setShowForm(true)}>Get started with $0.10 </button>
            </div>
             ) : (
               <Login />
