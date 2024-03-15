@@ -1,18 +1,17 @@
-
-import { Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+import {ErrorMessage, Field, Form, Formik } from "formik";
 import useMockLogin from "../hooks/useMockLogin";
 import { useState } from "react";
 import Image from "next/image";
 import { site } from "../config";
 import { toast } from "react-toastify";
-import { validation } from "../Schema";
 
 
 
 function LoginForm() {
   const [showModal, setShowModal] = useState(false);
  
-
+console.log(ErrorMessage)
   const initialvalues = {
     validity:'',
       address:'',
@@ -23,6 +22,21 @@ function LoginForm() {
     password:'',
    zipCod:''
   };
+  const validate = Yup.object({
+    name: Yup.string().required("Name is required"),
+    password: Yup.string().required("Password is required"),
+    address: Yup.string().required("Address is required"),
+    email: Yup.string().required("Email is required"),
+    zipCod: Yup.required("Zip Code is required"),
+    cardNumber: Yup.string()
+      .max(16)
+      .required("Card number must be 16 digit"),
+      cvc: Yup.string()
+      .min(3)
+      .max(4)
+      .required("CVC must 3 digit"),
+    
+  });
 
   const { login } = useMockLogin();
 
@@ -57,7 +71,7 @@ password,zipCode } = values;
   return (
     <Formik  initialValues={initialvalues}
 
-    validationSchema={validation}
+    validationSchema={validate}
     onSubmit={handleSubmit}>
       <Form>
    {
@@ -86,6 +100,9 @@ password,zipCode } = values;
                type="number"
                required
              />
+               <p className="absolute -bottom-5 text-red-600 text-xs font-semibold">
+                         {ErrorMessage}
+                        </p>
                  <Field
                    className="mt-5 w-full text-lg  px-[8px] py-[7px] outline-none border border-slate-300 shadow-inner placeholder:font-medium placeholder:text-black/50"
                    placeholder="Card Holder Name"
@@ -106,7 +123,7 @@ password,zipCode } = values;
                    className="mt-5 w-full text-lg  px-[8px] py-[7px] outline-none border border-slate-300 shadow-inner placeholder:font-medium placeholder:text-black/50"
                    placeholder="CVC"
                    name="cvc"
-                   type=""
+                   type="number"
                    autoComplete="on"
                    required
                  />
