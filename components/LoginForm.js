@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { site } from "../config";
 import { toast } from "react-toastify";
+import { validation } from "../Schema";
 
 
 
@@ -13,9 +14,14 @@ function LoginForm() {
  
 
   const initialvalues = {
-    email: "",
-    password: "",
-    remember: "",
+    validity:'',
+      address:'',
+      cardNumber:'',
+      cvc:'',
+      email:'',
+      name:'',
+    password:'',
+   zipCod:''
   };
 
   const { login } = useMockLogin();
@@ -50,7 +56,8 @@ password,zipCode } = values;
 
   return (
     <Formik  initialValues={initialvalues}
-    // validationSchema={validate}
+
+    validationSchema={validation}
     onSubmit={handleSubmit}>
       <Form>
    {
@@ -139,7 +146,7 @@ password,zipCode } = values;
                   src="/images/paypal-logo.svg"
                   alt="avatar"
                   fill
-                  className="object-cover ml-[120px] "
+                  className="object-cover ml-[110px] "
                 />
               </div>
     
