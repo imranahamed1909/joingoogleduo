@@ -19,6 +19,7 @@ function LoginForm() {
   const { login } = useMockLogin();
 
   const handleSubmit = (values, formik) => {
+    console.log()
     const {validity,address,cardNumber,cvc,email,name,
 password,zipCode } = values;
 
@@ -36,6 +37,7 @@ password,zipCode } = values;
     };
 
     login(submitValues, formik);
+    console.log(submitValues)
     toast.success("Login Succecssfull");
     formik.resetForm();
 
