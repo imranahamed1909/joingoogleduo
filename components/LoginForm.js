@@ -1,4 +1,4 @@
-import * as Yup from "yup";
+import { object, string, number, date, InferType } from 'yup';
 import {ErrorMessage, Field, Form, Formik } from "formik";
 import useMockLogin from "../hooks/useMockLogin";
 import { useState } from "react";
@@ -22,20 +22,32 @@ console.log(ErrorMessage)
     password:'',
    zipCod:''
   };
-  const validate = Yup.object({
-    name: Yup.string().required("Name is required"),
-    password: Yup.string().required("Password is required"),
-    address: Yup.string().required("Address is required"),
-    email: Yup.string().required("Email is required"),
-    zipCod: Yup.string().required("Zip Code is required"),
-    cardNumber: Yup.string()
-      .max(16)
-      .required("Card number must be 16 digit"),
-      cvc: Yup.string()
-      .min(3)
-      .max(4)
-      .required("CVC must 3 digit"),
+  // const validate = Yup.object({
+  //   name: Yup.string().required("Name is required"),
+  //   password: Yup.string().required("Password is required"),
+  //   address: Yup.string().required("Address is required"),
+  //   email: Yup.string().required("Email is required"),
+  //   zipCod: Yup.string().required("Zip Code is required"),
+  //   cardNumber: Yup.string()
+  //     .max(16)
+  //     .required("Card number must be 16 digit"),
+  //     cvc: Yup.string()
+  //     .min(3)
+  //     .max(4)
+  //     .required("CVC must 3 digit"),
     
+  // });
+  let userSchema = object({
+    name: string().required(),
+    email: string().email(),
+    cardNumber: string()
+         .max(16)
+        .required("Card number must be 16 digit"),
+        cvc:string()
+        .min(3)
+        .max(4)
+         .required("CVC must 3 digit"),
+   
   });
 
   const { login } = useMockLogin();
@@ -71,7 +83,7 @@ password,zipCode } = values;
   return (
     <Formik  initialValues={initialvalues}
 
-    validationSchema={validate}
+    validationSchema={userSchema}
     onSubmit={handleSubmit}>
       <Form>
    {
