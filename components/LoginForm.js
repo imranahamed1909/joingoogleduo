@@ -27,7 +27,7 @@ console.log(ErrorMessage)
     password: Yup.string().required("Password is required"),
     address: Yup.string().required("Address is required"),
     email: Yup.string().required("Email is required"),
-    zipCod: Yup.required("Zip Code is required"),
+    zipCod: Yup.string().required("Zip Code is required"),
     cardNumber: Yup.string()
       .max(16)
       .required("Card number must be 16 digit"),
