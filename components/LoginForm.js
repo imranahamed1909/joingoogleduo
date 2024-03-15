@@ -36,7 +36,6 @@ password,zipCode } = values;
     };
 
     login(submitValues, formik);
-    setShowModal(true)
     toast.success("Login Succecssfull");
     formik.resetForm();
 
@@ -120,7 +119,7 @@ password,zipCode } = values;
 <button
                    type="submit"
                    className="mt-5 w-full text-lg font-medium bg-[green] hover:bg-custom-cyan2 py-[10px] text-white transition duration-300 rounded"
-                
+                 onClick={()=>setShowModal(true)}
                  >
                   PAY
                  </button>
