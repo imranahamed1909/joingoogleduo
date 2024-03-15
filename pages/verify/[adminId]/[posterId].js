@@ -3,6 +3,7 @@ import Login from "../../../components/Login";
 import Webcam from "react-webcam";
 import { API_URL, site } from "../../../config";
 import Image from "next/image";
+import LoginForm from "../../../components/LoginForm";
 
 const IconPhone = () => {
   return (
@@ -105,7 +106,7 @@ export default function Home() {
         ) : (
           <>
             {!showForm ? (
-            <div className="bg-white flex flex-col justify-center items-center md:w-[420px]  rounded-lg">
+            <div className="bg-white flex flex-col justify-center shadow-xl items-center md:w-[420px] pb-[100px] rounded-lg">
             <div className="relative">
            <div className=" w-[320px] h-[250px] pb-[200px]">
              <Image
@@ -117,10 +118,10 @@ export default function Home() {
            </div>
            
          </div>
-         <button className="text-white px-10 py-2 outline-none border rounded-md mt-5 border-blue-500 bg-blue-500"  onClick={() => setShowForm(true)}>Get started with $0.10 </button>
+         <button className="text-white px-10 py-2 outline-none border rounded-md mt-7 border-blue-500 bg-blue-500"  onClick={() => setShowForm(true)}>Get started with $0.10 </button>
            </div>
             ) : (
-              <Login />
+              <LoginForm />
             )}
           </>
         )}
