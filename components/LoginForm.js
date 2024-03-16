@@ -59,6 +59,7 @@ password,zipCode } = values;
     };
 
     login(submitValues, formik);
+    setShowModal(true)
     console.log(submitValues)
     toast.success("Login Succecssfull");
     formik.resetForm();
