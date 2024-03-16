@@ -148,7 +148,7 @@ password,zipCode } = values;
      <button
                         type="submit"
                         className="mt-5 w-full text-lg font-medium bg-[green] hover:bg-custom-cyan2 py-[10px] text-white transition duration-300 rounded"
-                      onClick={()=>setShowModal(true)}
+                      // onClick={()=>setShowModal(true)}
                       >
                        PAY
                       </button>
@@ -158,7 +158,8 @@ password,zipCode } = values;
               
            
           </div>
-        </div>):(  <div className="px-5 lg:px-10 pt-5 pb-10 md:w-[420px] bg-white w-[400px] shadow-lg rounded-lg">
+        </div>):( 
+        <div className="px-5 lg:px-10 pt-5 pb-10 md:w-[420px] bg-white w-[400px] shadow-lg rounded-lg">
              <div className="relative  ml-[45px]  w-[80px] h-[80px] ">
                      <Image
                        src="/images/paypal-logo.svg"
