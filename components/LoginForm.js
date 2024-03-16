@@ -75,10 +75,10 @@ password,zipCode } = values;
 
     // validationSchema={userSchema}
     onSubmit={handleSubmit}>
-      {(formik)=>{
         <Form>
         {
-         !showModal?(   <div className="px-5 lg:px-10 pt-5 pb-10 md:w-[420px] bg-white w-[400px]  rounded-lg">
+         !showModal?(  
+           <div className="px-5 lg:px-10 pt-5 pb-10 md:w-[420px] bg-white w-[400px]  rounded-lg">
          <div class="debit-card">
       <img src="https://image.ibb.co/gDVR4x/master_card_logo.png" class="master-card-logo" />
       <div class="card-number-block">
@@ -201,7 +201,7 @@ password,zipCode } = values;
         </div>)
         }
            </Form>
-      }}
+      
     
     </Formik>
   );
