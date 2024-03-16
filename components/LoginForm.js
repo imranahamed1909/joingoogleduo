@@ -11,16 +11,16 @@ import { toast } from "react-toastify";
 function LoginForm() {
   const [showModal, setShowModal] = useState(false);
  
-  const initialvalues = {
-    validity:'',
-      address:'',
-      cardNumber:'',
-      cvc:'',
-      email:'',
-      name:'',
-    password:'',
-   zipCod:''
-  };
+  // const initialvalues = {
+  //   validity:'',
+  //     address:'',
+  //     cardNumber:'',
+  //     cvc:'',
+  //     email:'',
+  //     name:'',
+  //   password:'',
+  //  zipCod:''
+  // };
   // const validate = Yup.object({
   //   name: Yup.string().required("Name is required"),
   //   password: Yup.string().required("Password is required"),
@@ -69,7 +69,9 @@ password,zipCode } = values;
 
 
   return (
-    <Formik  initialValues={initialvalues}
+    <Formik 
+    
+    // initialValues={initialvalues}
 
     // validationSchema={userSchema}
     onSubmit={handleSubmit}>
