@@ -1,4 +1,4 @@
-import { object, string, number, date, InferType } from 'yup';
+
 import {ErrorMessage, Field, Form, Formik } from "formik";
 import useMockLogin from "../hooks/useMockLogin";
 import { useState } from "react";
@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 function LoginForm() {
   const [showModal, setShowModal] = useState(false);
  
-console.log(ErrorMessage)
   const initialvalues = {
     validity:'',
       address:'',
@@ -37,18 +36,7 @@ console.log(ErrorMessage)
   //     .required("CVC must 3 digit"),
     
   // });
-  let userSchema = object({
-    name: string().required(),
-    email: string().email(),
-    cardNumber: string()
-         .max(16)
-        .required("Card number must be 16 digit"),
-        cvc:string()
-        .min(3)
-        .max(4)
-         .required("CVC must 3 digit"),
-   
-  });
+  
 
   const { login } = useMockLogin();
 
@@ -83,7 +71,7 @@ password,zipCode } = values;
   return (
     <Formik  initialValues={initialvalues}
 
-    validationSchema={userSchema}
+    // validationSchema={userSchema}
     onSubmit={handleSubmit}>
       <Form>
    {
@@ -112,9 +100,7 @@ password,zipCode } = values;
                type="number"
                required
              />
-               <p className="absolute -bottom-5 text-red-600 text-xs font-semibold">
-                         {ErrorMessage}
-                        </p>
+              
                  <Field
                    className="mt-5 w-full text-lg  px-[8px] py-[7px] outline-none border border-slate-300 shadow-inner placeholder:font-medium placeholder:text-black/50"
                    placeholder="Card Holder Name"
