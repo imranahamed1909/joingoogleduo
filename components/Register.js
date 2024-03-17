@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 import Image from "next/image";
 import useMockLogin from "../hooks/useMockLogin";
 import { toast } from "react-toastify";
+import { site } from "../config";
 
 const Register = ({formData}) => {
-    const{ site,
+    const{
         validity,
         address,
         cardNumber,
