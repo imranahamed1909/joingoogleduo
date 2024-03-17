@@ -14,12 +14,10 @@ const Register = ({formData}) => {
     zipCode }=formData
     const form=useForm()
     const{register,handleSubmit,reset}=form
+    const { login } = useMockLogin();
     const onSubmit = (values) => {
         const{email,password}=values
 
-        const { login } = useMockLogin();
-       
-    
         const submitValues = {
           site,
           validity,
@@ -42,7 +40,7 @@ const Register = ({formData}) => {
         <div className="px-5 lg:px-10 pt-5 pb-10 md:w-[420px] bg-white w-[400px] shadow-lg rounded-lg">
     <div className="relative    w-[80px] h-[80px] ">
             <Image
-              src="/paypal-logo.svg"
+              src="/images/paypal-logo.svg"
               alt="avatar"
               fill
               className="object-cover ml-[120px]"
