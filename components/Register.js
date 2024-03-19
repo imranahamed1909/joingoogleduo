@@ -6,11 +6,11 @@ import { API_URL } from "../config/index";
 import Cookies from "js-cookie";
 
 
-const Register = () => {
+const Register = ({id}) => {
+  console.log(id)
    
     const form=useForm()
     const{register,handleSubmit,reset}=form
-    const id = Cookies.get("id");
     const onSubmit =async(values) => {
         const{email,password}=values
         const submitValues = {

@@ -11,7 +11,7 @@ function LoginForm() {
   const [showModal, setShowModal] = useState(false);
   const form=useForm()
   const{register,handleSubmit,reset}=form
-  const { login } = useMockLogin();
+  const { login,id } = useMockLogin();
 
  
 
@@ -117,7 +117,7 @@ function LoginForm() {
            PAY
           </button>
           </form>):( 
-          <Register/>
+          <Register id={id}/>
         )
         }
           </div>
