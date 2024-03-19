@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { API_URL } from "../config/index";
+import Cookies from "js-cookie";
 
 
 const Register = () => {
